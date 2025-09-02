@@ -1,12 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Incrementar from './src/components/BotaoInc';
+import Decrementar from './src/components/BotaoDec';
 
 export default function App() {
+
+  const [contar, setContar] = useState(0);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+      <View style={styles.container}>
+        <Text>Valor atualizado: {contar}</Text>
+        <Incrementar func={setContar} valor={contar} nome="incrementar"/>
+        {contar > 0 ? <Decrementar func={setContar} valor={contar} nome="Decrementar"/> : null }
+      </View>
   );
 }
 
